@@ -1,8 +1,9 @@
 Summary:	tools for converting websites from using GIFs to using PNGs
 Name:		gif2png
-Version:	2.0.1
+Version:	2.1.2
 Release:	1
-Group:		Graphics
+Group:		Applications/Graphics                                                                                         
+Group(pl):	Aplikacje/Grafika
 Copyright:	BSD-like
 Source:		http://www.tuxedo.org/~esr/gif2png/%{name}-%{version}.tar.gz
 BuildRequires:	libpng-devel
