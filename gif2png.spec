@@ -15,7 +15,7 @@ BuildRequires:	automake
 BuildRequires:	libpng-devel >= 1.0.8
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%description 
+%description
 Tools for converting GIFs to PNGs. The program gif2png converts GIF
 files to PNG files. The Python script web2png converts an entire web
 tree, also patching HTML pages to keep IMG SRC references correct.
