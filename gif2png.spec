@@ -8,9 +8,9 @@ Version:	2.4.5
 Release:	1
 License:	BSD-like
 Group:		Applications/Graphics
-Source0:	http://www.tuxedo.org/~esr/gif2png/%{name}-%{version}.tar.gz
-# Source0-md5:	d68a6c42dfbf5bdd9f42792d11563d5b
-URL:		http://www.tuxedo.org/~esr/gif2png/
+Source0:	http://catb.org/~esr/gif2png/%{name}-%{version}.tar.gz
+# Source0-md5:	2e7e49ac20b118e8f01a53f9399d07d0
+URL:		http://catb.org/~esr/gif2png/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libpng-devel >= 1.0.8
