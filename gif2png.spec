@@ -1,34 +1,38 @@
-Name: gif2png
-Version: 1.2.0
-Release: 1
-Summary: tools for converting websites from using GIFs to using PNGs
-Source: locke.ccil.org:/pub/esr/gif2png-1.2.0.tar.gz
-Copyright: BSD-like
-Group: Graphics
+Summary:	tools for converting websites from using GIFs to using PNGs
+Name:		gif2png
+Version:	1.2.0
+Release:	1
+Group:		Graphics
+Copyright:	BSD-like
+Source:		http://www.tuxedo.org/~esr/gif2png/%{name}-%{version}.tar.gz
+BuildRequires:	libpng-devel
+BuildRequires:	zlib-devel
+URL:		http://www.tuxedo.org/~esr/gif2png/
+BuildRoot:	/tmp/%{name}-%{version}-root
 
-%%description 
-Tools for converting GIFs to PNGs.  The program gif2png converts GIF files 
-to PNG files.  The Python script web2png converts an entire web tree, 
-also patching HTML pages to keep IMG SRC references correct.
+%description 
+Tools for converting GIFs to PNGs. The program gif2png converts GIF files
+to PNG files. The Python script web2png converts an entire web tree, also
+patching HTML pages to keep IMG SRC references correct.
 
 %prep
-%setup
+%setup -q
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" # Add  --enable-nls --without-included-gettext for internationalization
-export CFLAGS LDFLAGS
-./configure -prefix=/usr
+LDFLAGS="-s"; export LDFLAGS
+%configure
 make
 
 %install
-rm -f /usr/bin/gif2png
-cp gif2png web2png /usr/bin
-cp gif2png.1 /usr/man/man1/gif2png.1
-cp web2png.1 /usr/man/man1/web2png.1
+rm -rf $RPM_BUILD_ROOT
+
+make install DESTDIR=$RPM_BUILD_ROOT
+
+gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
+	README NEWS COPYING
 
 %files
-%doc README NEWS COPYING
-/usr/man/man1/gif2png.1
-/usr/man/man1/web2png.1
-/usr/bin/gif2png
-/usr/bin/web2png
+%defattr(644,root,root,755)
+%doc *.gz
+%attr(755,root,root) /usr/bin/*
+%{_mandir}/man1/*
