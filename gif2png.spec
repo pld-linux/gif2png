@@ -1,6 +1,6 @@
 Summary:	tools for converting websites from using GIFs to using PNGs
 Name:		gif2png
-Version:	2.1.2
+Version:	2.2.2
 Release:	1
 Group:		Applications/Graphics                                                                                         
 Group(pl):	Aplikacje/Grafika
