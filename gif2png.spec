@@ -11,7 +11,7 @@ Source:		http://www.tuxedo.org/~esr/gif2png/%{name}-%{version}.tar.gz
 BuildRequires:	libpng-devel
 BuildRequires:	zlib-devel
 URL:		http://www.tuxedo.org/~esr/gif2png/
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description 
 Tools for converting GIFs to PNGs. The program gif2png converts GIF files
