@@ -50,7 +50,7 @@ referência IMG SRC.
 
 %build
 rm -f missing
-aclocal
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 if [ -f %{_pkgconfigdir}/libpng12.pc ] ; then
