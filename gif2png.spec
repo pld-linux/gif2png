@@ -52,11 +52,12 @@ referência IMG SRC.
 rm -f missing
 aclocal
 autoconf
-automake -a -c
+automake -a -c -f --foreign
 if [ -f %{_pkgconfigdir}/libpng12.pc ] ; then
 	CPPFLAGS="`pkg-config libpng12 --cflags`"
 fi
 %configure CPPFLAGS="$CPPFLAGS"
+
 %{__make}
 
 %install
