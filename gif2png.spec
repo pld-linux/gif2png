@@ -9,6 +9,7 @@ Release:	1
 License:	BSD-like
 Group:		Applications/Graphics
 Source0:	http://www.tuxedo.org/~esr/gif2png/%{name}-%{version}.tar.gz
+# Source0-md5:	d68a6c42dfbf5bdd9f42792d11563d5b
 URL:		http://www.tuxedo.org/~esr/gif2png/
 BuildRequires:	autoconf
 BuildRequires:	automake
