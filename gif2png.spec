@@ -8,9 +8,6 @@ Version:	2.4.2
 Release:	2
 License:	BSD-like
 Group:		Applications/Graphics
-Group(de):	Applikationen/Grafik
-Group(pl):	Aplikacje/Grafika
-Group(pt):	Aplicações/Gráficos
 Source0:	http://www.tuxedo.org/~esr/gif2png/%{name}-%{version}.tar.gz
 URL:		http://www.tuxedo.org/~esr/gif2png/
 BuildRequires:	autoconf
