@@ -9,7 +9,7 @@ Release:	1
 License:	BSD-like
 Group:		Applications/Graphics
 Source0:	http://catb.org/~esr/gif2png/%{name}-%{version}.tar.gz
-# Source0-md5:	2e7e49ac20b118e8f01a53f9399d07d0
+# Source0-md5:	d6cd892be965d7cf84ebf913e8957c39
 URL:		http://catb.org/~esr/gif2png/
 BuildRequires:	autoconf
 BuildRequires:	automake
