@@ -5,7 +5,7 @@ Summary(pl):	Narzêdzia do konwersji plików GIF na pliki PNG
 Summary(pt_BR):	Ferramentas para a conversão de arquivos no formato GIF para PNG
 Name:		gif2png
 Version:	2.4.2
-Release:	2
+Release:	3
 License:	BSD-like
 Group:		Applications/Graphics
 Source0:	http://www.tuxedo.org/~esr/gif2png/%{name}-%{version}.tar.gz
@@ -52,8 +52,11 @@ referência IMG SRC.
 rm -f missing
 aclocal
 autoconf
-automake -a -c -f
-%configure
+automake -a -c
+if [ -f %{_pkgconfigdir}/libpng12.pc ] ; then
+	CPPFLAGS="`pkg-config libpng12 --cflags`"
+fi
+%configure CPPFLAGS="$CPPFLAGS"
 %{__make}
 
 %install
