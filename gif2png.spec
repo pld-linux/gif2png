@@ -18,6 +18,11 @@ Tools for converting GIFs to PNGs. The program gif2png converts GIF files
 to PNG files. The Python script web2png converts an entire web tree, also
 patching HTML pages to keep IMG SRC references correct.
 
+%description -l pl
+Narzêdzia do konwersji plików GIF do formatu PNG. Program gif2png konwertuje
+pliki GIF do formatu PNG. Pythonowy skrypt web2png konwertuje ca³e drzewo
+witryny WWW, poprawiaj±c jednocze¶nie odno¶niki IMG SRC w stronach HTML.
+
 %description -l es
 Herramienta de conversion GIF hacia PNG. El programa gif2png convierte los
 archivos GIF al formato PNG. El script Python convierte un arbol web
