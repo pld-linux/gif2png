@@ -3,7 +3,7 @@ Summary(es):	Herramienta para convertir sitios y imagenes de GIFs hacia PNGs
 Summary(fr):	Outils de conversion de sites: convertit les GIFs en PNGs
 Name:		gif2png
 Version:	2.3.3
-Release:	1
+Release:	2
 Group:		Applications/Graphics
 Group(de):	Applikationen/Grafik
 Group(pl):	Aplikacje/Grafika
@@ -49,8 +49,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
-	README NEWS COPYING
+gzip -9nf README NEWS COPYING
 
 %clean
 rm -rf $RPM_BUILD_ROOT
