@@ -4,8 +4,8 @@ Summary(fr):	Outils de conversion de sites: convertit les GIFs en PNGs
 Summary(pl):	Narzêdzia do konwersji plików GIF na pliki PNG
 Summary(pt_BR):	Ferramentas para a conversão de arquivos no formato GIF para PNG
 Name:		gif2png
-Version:	2.4.2
-Release:	3
+Version:	2.4.4
+Release:	1
 License:	BSD-like
 Group:		Applications/Graphics
 Source0:	http://www.tuxedo.org/~esr/gif2png/%{name}-%{version}.tar.gz
@@ -60,8 +60,6 @@ fi
 
 %{__make}
 
-gzip -9nf README NEWS COPYING
-
 %install
 rm -rf $RPM_BUILD_ROOT
 
@@ -72,6 +70,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc README NEWS COPYING
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
