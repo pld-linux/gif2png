@@ -1,8 +1,8 @@
 Summary:	Tools for converting websites from using GIFs to using PNGs
-Summary(es.UTF-8):   Herramienta para convertir sitios y imagenes de GIFs hacia PNGs
-Summary(fr.UTF-8):   Outils de conversion de sites: convertit les GIFs en PNGs
-Summary(pl.UTF-8):   Narzędzia do konwersji plików GIF na pliki PNG
-Summary(pt_BR.UTF-8):   Ferramentas para a conversão de arquivos no formato GIF para PNG
+Summary(es.UTF-8):	Herramienta para convertir sitios y imagenes de GIFs hacia PNGs
+Summary(fr.UTF-8):	Outils de conversion de sites: convertit les GIFs en PNGs
+Summary(pl.UTF-8):	Narzędzia do konwersji plików GIF na pliki PNG
+Summary(pt_BR.UTF-8):	Ferramentas para a conversão de arquivos no formato GIF para PNG
 Name:		gif2png
 Version:	2.5.1
 Release:	1
