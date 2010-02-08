@@ -5,15 +5,16 @@ Summary(pl.UTF-8):	Narzędzia do konwersji plików GIF na pliki PNG
 Summary(pt_BR.UTF-8):	Ferramentas para a conversão de arquivos no formato GIF para PNG
 Name:		gif2png
 Version:	2.5.1
-Release:	2
+Release:	3
 License:	BSD-like
 Group:		Applications/Graphics
 Source0:	http://catb.org/~esr/gif2png/%{name}-%{version}.tar.gz
 # Source0-md5:	85bb8ee345fc41c218de19dda0164806
+Patch0:		%{name}-libpng.patch
 URL:		http://catb.org/~esr/gif2png/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	libpng-devel >= 1.0.8
+BuildRequires:	libpng-devel >= 2:1.2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -48,6 +49,7 @@ referência IMG SRC.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 rm -f missing
@@ -55,7 +57,6 @@ rm -f missing
 %{__autoconf}
 %{__automake}
 %configure
-
 %{__make}
 
 %install
@@ -70,5 +71,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README NEWS COPYING
-%attr(755,root,root) %{_bindir}/*
-%{_mandir}/man1/*
+%attr(755,root,root) %{_bindir}/gif2png
+%attr(755,root,root) %{_bindir}/web2png
+%{_mandir}/man1/gif2png.1*
+%{_mandir}/man1/web2png.1*
