@@ -4,12 +4,12 @@ Summary(fr.UTF-8):	Outils de conversion de sites: convertit les GIFs en PNGs
 Summary(pl.UTF-8):	Narzędzia do konwersji plików GIF na pliki PNG
 Summary(pt_BR.UTF-8):	Ferramentas para a conversão de arquivos no formato GIF para PNG
 Name:		gif2png
-Version:	2.5.3
+Version:	2.5.4
 Release:	1
 License:	BSD-like
 Group:		Applications/Graphics
 Source0:	http://catb.org/~esr/gif2png/%{name}-%{version}.tar.gz
-# Source0-md5:	0b3e0e470c8976e9010131f688b6fad2
+# Source0-md5:	d63ea3fc6b6119589e8d4d6fead30df9
 URL:		http://catb.org/~esr/gif2png/
 BuildRequires:	autoconf
 BuildRequires:	automake
