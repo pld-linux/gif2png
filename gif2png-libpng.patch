@@ -1,0 +1,50 @@
+--- gif2png-2.5.5/gif2png.c.orig	2012-01-29 00:02:06.000000000 +0100
++++ gif2png-2.5.5/gif2png.c	2012-02-01 20:43:37.080071919 +0100
+@@ -122,8 +122,8 @@
+     int colors_used = 0;
+     byte remap[MAXCMSIZE];
+     int low_prec;
+-    png_struct *png_ptr = xalloc(sizeof (png_struct));
+-    png_info *info_ptr = xalloc(sizeof (png_info));
++    png_struct *png_ptr = NULL;
++    png_info *info_ptr = NULL;
+     int p;
+     int gray_bitdepth;
+     png_color pal_rgb[MAXCMSIZE], *pltep;
+@@ -283,13 +283,6 @@
+ 		    colors[i].red, colors[i].blue, colors[i].green);  
+ 	}
+ 
+-    if (setjmp(png_jmpbuf(png_ptr))) {
+-	fprintf(stderr, "gif2png:  libpng returns fatal error condition\n");
+-	free(png_ptr);
+-	free(info_ptr);
+-	return 1;
+-    }
+-
+ 
+     /* Create and initialize the png_struct with the desired error handler
+      * functions.  If you want to use the default stderr and longjump method,
+@@ -303,6 +296,13 @@
+     if (png_ptr == NULL)
+ 	return(2);
+ 
++    if (setjmp(png_jmpbuf(png_ptr))) {
++	fprintf(stderr, "gif2png:  libpng returns fatal error condition\n");
++	free(png_ptr);
++	free(info_ptr);
++	return 1;
++    }
++
+     /* Allocate/initialize the image information data.  REQUIRED */
+     info_ptr = png_create_info_struct(png_ptr);
+     if (info_ptr == NULL)
+@@ -321,7 +321,7 @@
+     png_init_io(png_ptr, fp);
+ 
+     if(optimize)
+-       png_set_compression_level(png_ptr, Z_BEST_COMPRESSION);
++       png_set_compression_level(png_ptr, 9 /*Z_BEST_COMPRESSION*/);
+ 
+     if (gamma_srgb)
+     {
