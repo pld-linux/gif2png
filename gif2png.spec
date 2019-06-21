@@ -4,19 +4,12 @@ Summary(fr.UTF-8):	Outils de conversion de sites: convertit les GIFs en PNGs
 Summary(pl.UTF-8):	Narzędzia do konwersji plików GIF na pliki PNG
 Summary(pt_BR.UTF-8):	Ferramentas para a conversão de arquivos no formato GIF para PNG
 Name:		gif2png
-Version:	2.5.12
+Version:	2.5.13
 Release:	1
 License:	BSD-like
 Group:		Applications/Graphics
 Source0:	http://catb.org/~esr/gif2png/%{name}-%{version}.tar.gz
 # Source0-md5:	8965d94b4e480b4b3a5eade7de468652
-# docs missing in 2.5.11 tarball
-Source1:	http://www.catb.org/~esr/gif2png/COPYING
-# Source1-md5:	f1a6294068953ac973448184457415dd
-Source2:	http://www.catb.org/~esr/gif2png/NEWS
-# Source2-md5:	f6147c29c5b2c12f211ff5a13b27e2a8
-Source3:	http://www.catb.org/~esr/gif2png/README
-# Source3-md5:	06075004876a4a28ec296348f59e02e9
 URL:		http://catb.org/~esr/gif2png/
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	libpng-devel >= 2:1.2.0
@@ -59,8 +52,6 @@ referência IMG SRC.
 %prep
 %setup -q
 
-cp -p %{SOURCE1} %{SOURCE2} %{SOURCE3} .
-
 %{__sed} -i -e '1s,/usr/bin/env python,/usr/bin/python,' web2png
 
 %build
@@ -74,14 +65,14 @@ cp -p %{SOURCE1} %{SOURCE2} %{SOURCE3} .
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	prefix=$RPM_BUILD_ROOT%{_prefix}
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc COPYING NEWS README gif2png-logo.png
+%doc COPYING INSTALL NEWS README gif2png-logo.png
 %attr(755,root,root) %{_bindir}/gif2png
 %attr(755,root,root) %{_bindir}/web2png
 %{_mandir}/man1/gif2png.1*
