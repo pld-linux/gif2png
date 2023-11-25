@@ -52,7 +52,8 @@ referência IMG SRC.
 %prep
 %setup -q
 
-%{__sed} -i -e '1s,/usr/bin/env python,/usr/bin/python,' web2png
+# not python3 ready as of 2.5.14
+%{__sed} -i -e '1s,/usr/bin/env python,%{__python},' web2png
 
 %build
 %{__make} \
