@@ -4,20 +4,30 @@ Summary(fr.UTF-8):	Outils de conversion de sites: convertit les GIFs en PNGs
 Summary(pl.UTF-8):	Narzędzia do konwersji plików GIF na pliki PNG
 Summary(pt_BR.UTF-8):	Ferramentas para a conversão de arquivos no formato GIF para PNG
 Name:		gif2png
-Version:	2.5.14
+Version:	3.0.3
 Release:	1
 License:	BSD-like
 Group:		Applications/Graphics
 Source0:	http://catb.org/~esr/gif2png/%{name}-%{version}.tar.gz
-# Source0-md5:	c63d13030a1386e2b3b4c6da2bb6a007
+# Source0-md5:	5f109edd79276d2245d2269446e4c4bd
+Source1:	%{name}-%{version}-vendor.tar.xz
+# Source1-md5:	2a298b30376beb82f995487d3bace8d8
+Patch0:		%{name}-go.sum.patch
 URL:		http://catb.org/~esr/gif2png/
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	libpng-devel >= 2:1.2.0
+BuildRequires:	golang
 BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
 BuildRequires:	xmlto
-BuildRequires:	zlib-devel
+ExclusiveArch:	%{ix86} %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%ifarch %{ix86}
+%define GOARCH 386
+%endif
+%ifarch %{x8664}
+%define GOARCH amd64
+%endif
 
 %description
 Tools for converting GIFs to PNGs. The program gif2png converts GIF
@@ -50,17 +60,14 @@ sub-diretórios, assim como modifica as páginas HTML mantendo as
 referência IMG SRC.
 
 %prep
-%setup -q
+%setup -q -b1
+%patch0 -p1
 
-# not python3 ready as of 2.5.14
-%{__sed} -i -e '1s,/usr/bin/env python,%{__python},' web2png
+%{__sed} -i -e '1s,/usr/bin/env python3,%{__python3},' web2png
 
 %build
-%{__make} \
-	CC="%{__cc}" \
-	CFLAGS="%{rpmcflags} -DVERSION=\\\"%{version}\\\"" \
-	CPPFLAGS="%{rpmcppflags}" \
-	LDFLAGS="%{rpmldflags}"
+export GOARCH=%{GOARCH}
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -73,7 +80,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc COPYING INSTALL NEWS README gif2png-logo.png
+%doc NEWS README gif2png-logo.png
 %attr(755,root,root) %{_bindir}/gif2png
 %attr(755,root,root) %{_bindir}/web2png
 %{_mandir}/man1/gif2png.1*
